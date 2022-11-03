@@ -9,9 +9,13 @@ import (
 )
 
 const (
-	esc = 0x1B
-	gs  = 0x1D
-	lf  = 0x0A
+	esc                               = 0x1B
+	gs                                = 0x1D
+	lf                                = 0x0A
+	QRCodeErrorCorrectionLevelL uint8 = 48
+	QRCodeErrorCorrectionLevelM uint8 = 49
+	QRCodeErrorCorrectionLevelQ uint8 = 50
+	QRCodeErrorCorrectionLevelH uint8 = 51
 )
 
 type Escpos struct {
