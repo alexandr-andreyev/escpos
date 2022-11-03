@@ -10,6 +10,7 @@ const (
 	CharsetPC860 charset = 3
 	CharsetPC863 charset = 4
 	CharsetPC865 charset = 5
+	CharsetPC866 charset = 7 //17 hz для чего это
 	CharsetPC858 charset = 19
 )
 
@@ -27,6 +28,8 @@ func (e *Escpos) Charset(charset charset) {
 		e.enc = charmap.CodePage863.NewEncoder()
 	case CharsetPC865:
 		e.enc = charmap.CodePage865.NewEncoder()
+	case CharsetPC866:
+		e.enc = charmap.CodePage866.NewEncoder()
 	}
 
 	e.dev.Write([]byte{esc, 0x74, byte(charset)})
