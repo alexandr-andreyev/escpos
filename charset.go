@@ -5,13 +5,14 @@ import "golang.org/x/text/encoding/charmap"
 type charset byte
 
 const (
-	CharsetPC437 charset = 0
-	CharsetPC850 charset = 2
-	CharsetPC860 charset = 3
-	CharsetPC863 charset = 4
-	CharsetPC865 charset = 5
-	CharsetPC866 charset = 7 //17 hz для чего это
-	CharsetPC858 charset = 19
+	CharsetPC437    charset = 0
+	CharsetPC850    charset = 2
+	CharsetPC860    charset = 3
+	CharsetPC863    charset = 4
+	CharsetPC865    charset = 5
+	CharsetPC866_7  charset = 7
+	CharsetPC866_17 charset = 17
+	CharsetPC858    charset = 19
 )
 
 func (e *Escpos) Charset(charset charset) {
@@ -28,7 +29,9 @@ func (e *Escpos) Charset(charset charset) {
 		e.enc = charmap.CodePage863.NewEncoder()
 	case CharsetPC865:
 		e.enc = charmap.CodePage865.NewEncoder()
-	case CharsetPC866:
+	case CharsetPC866_7:
+		e.enc = charmap.CodePage866.NewEncoder()
+	case CharsetPC866_17:
 		e.enc = charmap.CodePage866.NewEncoder()
 	}
 

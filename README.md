@@ -1,10 +1,11 @@
 # escpos
+
 Golang package for handling ESC-POS thermal printer commands
 
 ## Instalation
 
 ```bash
-go get -u github.com/augustopimenta/escpos
+go get -u https://github.com/alexandr-andreyev/escpos
 ```
 
 ## Usage example
@@ -13,7 +14,7 @@ go get -u github.com/augustopimenta/escpos
 package main
 
 import (
-	"github.com/augustopimenta/escpos"
+	"https://github.com/alexandr-andreyev/escpos"
 	"os"
 )
 
@@ -39,7 +40,8 @@ func main() {
 	p.Font(escpos.FontA)
 	p.FontAlign(escpos.AlignLeft)
 	p.Writeln("Lorem ipsum primis potenti in purus vestibulum amet enim, fames orci dapibus tempor...")
-
+	p.FontAlign(escpos.AlignCenter)
+	p.QRCode("https://github.com/alexandr-andreyev/escpos", true, 6, escpos.QRCodeErrorCorrectionLevelH)
 	p.FeedN(10)
 
 	p.FullCut()

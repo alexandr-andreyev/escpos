@@ -125,7 +125,7 @@ func (e *Escpos) QRCode(code string, model bool, size uint8, correctionLevel uin
 // New create new Escpos struct and set default enconding
 func New(dev io.ReadWriter) *Escpos {
 	escpos := &Escpos{dev: dev}
-	escpos.Charset(CharsetPC866)
+	escpos.Charset(CharsetPC866_17)
 
 	return escpos
 }
