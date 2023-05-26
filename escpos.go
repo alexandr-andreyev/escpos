@@ -44,14 +44,14 @@ func (e *Escpos) SelfTest() {
 }
 
 // Write print text
-func (e *Escpos) Write(text string) {
-	str, err := e.enc.String(text)
-
+func (e *Escpos) Write(text string) error {
+	str, err := encoding.ReplaceUnsupported(e.enc).String(text)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	e.dev.Write([]byte(str))
+	return nil
 }
 
 func (e *Escpos) Writeln(text string) {
