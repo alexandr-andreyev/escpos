@@ -123,8 +123,13 @@ func (e *Escpos) QRCode(code string, model bool, size uint8, correctionLevel uin
 }
 
 // New create new Escpos struct and set default enconding
-func New(dev io.ReadWriter, codepage charset) *Escpos {
+func New(dev io.ReadWriter, codepage int) *Escpos {
 	escpos := &Escpos{dev: dev}
-	escpos.Charset(codepage)
+	// default for russian text
+	// установить енкодер
+	escpos.Charset(CharsetPC866)
+
+	// установить кодовую страницу в принтере
+	escpos.SetCodePage(codepage)
 	return escpos
 }
