@@ -58,7 +58,7 @@ func (e *Escpos) Writeln(text string) {
 	e.Write(text + "\n")
 }
 
-//Print QRCode
+// Print QRCode
 func (e *Escpos) QRCode(code string, model bool, size uint8, correctionLevel uint8) (int, error) {
 	if len(code) > 7089 {
 		return 0, fmt.Errorf("the code is too long, it's length should be smaller than 7090")
@@ -123,9 +123,8 @@ func (e *Escpos) QRCode(code string, model bool, size uint8, correctionLevel uin
 }
 
 // New create new Escpos struct and set default enconding
-func New(dev io.ReadWriter) *Escpos {
+func New(dev io.ReadWriter, codepage charset) *Escpos {
 	escpos := &Escpos{dev: dev}
-	escpos.Charset(CharsetPC866_17)
-
+	escpos.Charset(codepage)
 	return escpos
 }
